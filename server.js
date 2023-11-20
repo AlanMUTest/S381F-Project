@@ -176,18 +176,17 @@ app.route('/profile/changepassword')
         try{
             if (flag) {
                 console.log('Password updated');
-                return res.json({msg: 'Your password updated'});
+                return res.status(200).json({ msg: 'Your password updated' });
             } else {
                 console.log('Invalid old password');
-                return res.status(401).send('Invalid old password');
+                return res.status(401).json({ msg: 'Invalid old password' });
             }
         } catch (err) {
             console.log(err);
-            return res.status(500).send('Internal Server Error');
+            return res.status(500).json({ msg: 'Internal Server Error' });
         }
         
     });
-
 
 function auth(req, res, next) {
     if (req.session.username) {
@@ -261,8 +260,8 @@ app.use((err, req, res, next) => {
 //deleteUser('admin');
 //deleteUser('demo');
 //Insert default user
-insertUser('admin', 'admin', 'admin');
-insertUser('demo', 'demo', 'user');
+//insertUser('admin', 'admin', 'admin');
+//insertUser('demo', 'demo', 'user');
 
 //Start server
 app.listen(3999, () => {

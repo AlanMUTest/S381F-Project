@@ -29,18 +29,17 @@ $("#form").submit((event) => {
     data: $('#form').serialize(),
     dataType: "json",
     success: (data, textStatus) => {
-      console.log(data);
+                  console.log(data);
                   $('#form')[0].reset();
-      console.log('a');
-                  document.getElementById("check").innerHTML = data.responseJSON.msg;
+                  document.getElementById("check").innerHTML = data.msg;
                   setTimeout(() => {
                       document.getElementById("check").innerHTML = "";
                   }, 3000);
     },
     error: (data, textStatus) => {
-                  //console.log(data);
+                  console.log(data);
                   $('#form')[0].reset();
-                  if (data.status == 401) {
+                  if (data.status == 401 || data.status == 500) {
                       document.getElementById("check").innerHTML = data.responseJSON.msg;
                       setTimeout(() => {
                           document.getElementById("check").innerHTML = "";
@@ -81,7 +80,7 @@ $("#form").submit((event) => {
                   <input class="form-control" type="password" name="new_pw" placeholder="New Password">
                 </div>
                   <div class="row">
-                    <div class="col-3">
+                    <div class="col-8">
                       <input type="submit" value="Submit" class="btn btn-primary px-4">
                     </div>
                     <div class="col-3">

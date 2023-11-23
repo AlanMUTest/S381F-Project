@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema(
     {
+        p_id: {
+            type: String,
+            required: true,
+            unique: true
+        },
         name: {
             type: String,
             required: true
@@ -13,18 +18,22 @@ const productSchema = new mongoose.Schema(
         price: {
             type: Number,
             required: true
-        },stock: {
+        },
+        stock: {
             type: Number,
             required: true,
+            validate : {
+                validator : Number.isInteger,
+                message   : '{VALUE} is not an integer value'
+            }
           },
         image: {
-            type: String,
-            required: true
+            type: String
         },
         description: String,
     },
     { timestamps: true }
 );
 
-const Prodect = mongoose.model('Prodect', productSchema);
-module.exports = Prodect;
+const Product = mongoose.model('products', productSchema);
+module.exports = Product;

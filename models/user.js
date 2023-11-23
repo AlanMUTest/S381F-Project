@@ -6,13 +6,17 @@ const userSchema = new mongoose.Schema(
         username: {
             type: String,
             required: true,
-            unique: true
+            unique: true,
         },
         hash: {
             type: String
         },
         salt: {
             type: String
+        },
+        apikey: {
+            type: String,
+            unique: [true, 'API Key is conflict with other user']
         },
         role: {
             type: String,
@@ -39,7 +43,13 @@ userSchema.methods.validPassword = function(password) {
     var hash = crypto.pbkdf2Sync(password,  
     this.salt, 1000, 64, `sha512`).toString(`hex`); 
     return this.hash === hash; 
-}; 
+};
+
+userSchema.methods.genAPIKey = function() {
+    return [...Array(30)]
+    .map((e) => ((Math.random() * 36) | 0).toString(36))
+    .join('');
+}
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

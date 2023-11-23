@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <base href="./">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login</title>
-    <meta name="theme-color" content="#ffffff">
-    <!-- Vendors styles-->
-    <link rel="stylesheet" href="../node_modules/simplebar/dist/simplebar.css">
-    <link rel="stylesheet" href="../css/vendors/simplebar.css">
-    <!-- Main styles for this application-->
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/examples.css" rel="stylesheet">
-    <script src="../js/config.js"></script>
-    <script src="../js/color-modes.js"></script>
+<%- include('other/head', {title: "Login"}) %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	  
     <script type="text/javascript">
@@ -88,20 +72,6 @@
         </div>
       </div>
     </div>
-    <!-- CoreUI and necessary plugins-->
-    <script src="../node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
-    <script src="../node_modules/simplebar/dist/simplebar.min.js"></script>
-    <script>
-      const header = document.querySelector('header.header');
-      
-      document.addEventListener('scroll', () => {
-        if (header) {
-          header.classList.toggle('shadow-sm', document.documentElement.scrollTop > 0);
-        }
-      });
-      
-    </script>
-    <script> 
-    </script>
+    <%- include('other/footer') %>
   </body>
 </html>

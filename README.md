@@ -1,4 +1,4 @@
-# **School Mini Project <br> Developing**
+# **School Mini Project**
 
 ********************************************
 ## How to install
@@ -70,18 +70,18 @@ User who is admin role can delete user and product info from the dashboard.
 
 - Update
 1. Update product stock (Role: User/Admin, Method: POST)
-    domain.ltd/api/user/update/stock
+    domain.ltd/api/product/update/stock
+        ?apikey=[View in Profile]
+        ?p_id=[INTEGER ONLY]
+        ?stock=[INTEGER ONLY]
+
+2. Update product info (Role: Admin, Method: POST)
+    domain.ltd/api/product/update/a;;
         ?apikey=[View in Profile]
         ?p_id=[INTEGER ONLY]
         ?name=[String]
         ?manufacturer=[String]
         ?price=[NUMBER]
-        ?stock=[INTEGER ONLY]
-
-2. Update product info (Role: Admin, Method: POST)
-    domain.ltd/api/user/update/stock
-        ?apikey=[View in Profile]
-        ?p_id=[INTEGER ONLY]
         ?stock=[INTEGER ONLY]
 
 3. Force reset user password (Role: Admin, Method: POST)

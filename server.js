@@ -73,7 +73,6 @@ async function updateUser(username, old_pw, new_pw, role) {
     
     if (userinfo != null) {
 
-        
         // Check wherever the old password is the same
         if (userinfo.validPassword(old_pw)) {
             new_pw = userinfo.setPassword(new_pw);
@@ -126,18 +125,15 @@ async function updateUser_admin(username, new_pw, role) {
                 { role: role },
                 { new: true });
             await userinfo.save();
-            msg = `${username} password force reseted`;
-            console.log(msg);
+            console.log(`${username} password force reseted`);
             return true;
         } catch(err) {
             console.log(err);
-            msg = `Failed to reset ${username} password`;
-            console.log(msg);
+            console.log(`Failed to reset ${username} password`);
             return false;
         }    
     } else {
-        msg = `Failed to reset ${username} password`;
-        console.log(msg);
+        console.log(`Failed to reset ${username} password`);
         return false;
     }
 }
@@ -145,6 +141,7 @@ async function updateUser_admin(username, new_pw, role) {
 /**
  * Delete user from mongoDB
  * @param {string} username
+ * @returns {boolean}
  */
 async function deleteUser(username) {
     try {
@@ -164,6 +161,10 @@ async function deleteUser(username) {
     }
 }
 
+/**
+ * Get All Users
+ * @returns {Array}
+ */
 async function listUsers() {
     const users = await User.find().select('username role -_id').sort({ username: 1 });;
     return users;
@@ -961,9 +962,9 @@ app.use((req, res, next) => {
 
 // error handler
 // define as the last app.use callback
-//app.use((err, req, res, next) => {
-//  res.status(500).render('500');
-//});
+app.use((err, req, res, next) => {
+  res.status(500).render('500');
+});
 
 //Initialize User Data
 //deleteUser('admin');

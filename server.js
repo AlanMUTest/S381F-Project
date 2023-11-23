@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express()
 const corsOptions = {
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    methods: 'GET,POST',
   };
 app.use(cors(corsOptions));
 app.disable('x-powered-by');

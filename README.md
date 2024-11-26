@@ -1,12 +1,7 @@
 # **School Mini Project**
 Inventory Management System
 
-Group: 10
-Name: 
-Chan Ming Lun (13360633),
-Chan Yi Chun (13345200)
-
-Application link: https://s381f-mini-project.onrender.com/
+Application link: 
 
 ********************************************
 ## How to install
